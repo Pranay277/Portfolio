@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundelly Pranay | Software Engineer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+        }
+
+        body {
+            line-height: 1.6;
+            color: #c9d1d9;
+            background-color: #0d1117;
+        }
+
+        a {
+            text-decoration: none;
+            color: #58a6ff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            background-color: #161b22;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #30363d;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #c9d1d9;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .section-container {
+            margin-bottom: 4rem;
+            scroll-margin-top: 80px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #00ff66;
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 0.5rem;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            padding: 5rem 0;
+            min-height: 70vh;
+        }
+
+        .hero-text { flex: 1; }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.5rem;
+            color: #8b949e;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #c9d1d9;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-image {
+            flex-basis: 280px;
+            text-align: right;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 280px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #30363d;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 3rem 0;
+            }
+            .hero-image { text-align: center; }
+        }
+
+        .content-box {
+            background: #161b22;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: #161b22;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #30363d;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-img {
+            width: 100%;
+            height: auto; 
+            display: block;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #30363d;
+        }
+
+        
+        .project-gallery {
+            display: flex;
+            flex-direction: column; /* This forces the top-to-bottom stack */
+            gap: 15px; /* Adds space between the top and bottom image */
+            margin-bottom: 1.5rem;
+        }
+
+        .project-gallery .project-img {
+            margin-bottom: 0; /* Let the flex 'gap' handle the spacing instead */
+            width: 100%;
+        }
+
+        .project-card h3 { 
+            color: #00ff66; 
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .tag {
+            background-color: #21262d;
+            color: #c9d1d9;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.4rem;
+            border: 1px solid #30363d;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-list { list-style: none; }
+
+        .info-list li {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .info-list li:last-child { 
+            border-bottom: none; 
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-list strong {
+            color: #ffffff;
+            font-size: 1.05rem;
+            display: block;
+        }
+
+        .info-list span {
+            color: #8b949e;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #238636;
+            color: #ffffff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            border: 1px solid rgba(240, 246, 252, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #2ea043;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #0d1117;
+            color: #8b949e;
+            border-top: 1px solid #30363d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#tools">Tools</a>
+    <a href="#workshops">Workshops</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#education">Education</a>
+    <a href="#languages">Languages</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+
+    <div class="section-container hero-section" id="home">
+        <div class="hero-text">
+            <h1>Gundelly Pranay</h1>
+            <h3>AI & Software Engineering Student</h3>
+            <p>
+                Passionate about building intelligent systems, exploring computer vision,
+                and developing real-world AI-driven solutions.
+            </p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+        <div class="hero-image">
+            <img src="images/logo.png" alt="Pranay Gundelly">
+        </div>
+    </div>
+
+    <div class="section-container" id="about">
+        <h2>About Me</h2>
+        <div class="content-box">
+            <p>
+                Hi, I’m Pranay, a Computer Science and Engineering student currently in my 6th semester (2026).
+                I have a strong interest in Artificial Intelligence, Machine Learning, and Computer Vision.
+            </p><br>
+            <p>
+                I’ve worked on YOLO-based object detection, Android security applications, and IoT systems.
+                I’m continuously improving my skills through hands-on projects and research-driven learning.
+            </p>
+        </div>
+    </div>
+
+    <div class="section-container" id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <img class="project-img" src="images/train_batch0.jpg" alt="Urban Infrastructure Monitoring">
+                <h3>Urban Infrastructure Monitoring</h3>
+                <p>
+                    Object detection system using YOLO models to identify infrastructure issues from video frames.
+                </p>
+                <div>
+                    <span class="tag">YOLO</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">PyTorch</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-gallery">
+                    <img class="project-img" src="images/Screenshot 2026-03-02 111257.png" alt="NyayaSetu">
+                    <img class="project-img" src="images/Screenshot 2026-03-02 111257.png" alt="NyayaSetu Screen 2">
+                </div>
+                <h3>NyayaSetu – Secure e-Voting</h3>
+                <p>
+                    Android-based e-Voting application using Firebase, OTP verification, and biometric authentication.
+                </p>
+                <div>
+                    <span class="tag">Android</span>
+                    <span class="tag">Firebase</span>
+                    <span class="tag">Security</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img class="project-img" src="images/WhatsApp Image 2024-12-18 at 17.54.08_42c3278f.jpg" alt="Smart Blind Stick">
+                <h3>Smart Blind Stick</h3>
+                <p>
+                    IoT-based smart blind stick using Arduino Nano and ultrasonic sensors with buzzer and vibration alerts.
+                </p>
+                <div>
+                    <span class="tag">IoT</span>
+                    <span class="tag">Arduino</span>
+                    <span class="tag">Embedded</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section-container" id="skills">
+        <h2>Skills</h2>
+        <div class="content-box">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">C</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">SQL</span>
+            <span class="tag">HTML & CSS</span>
+            <span class="tag">Android Development</span>
+        </div>
+    </div>
+
+    <div class="section-container" id="tools">
+        <h2>Tools & Libraries</h2>
+        <div class="content-box">
+            <span class="tag">PyTorch</span>
+            <span class="tag">YOLO</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Git & GitHub</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Spyder</span>
+            <span class="tag">Jupyter Notebook</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Gazebo</span>
+        </div>
+    </div>
+
+    <div class="section-container" id="workshops">
+        <h2>Workshops</h2>
+        <div class="content-box">
+            <ul class="info-list">
+                <li>
+                    <strong>Cybersecurity Workshop</strong>
+                    <span>IIT Hyderabad</span>
+                </li>
+                <li>
+                    <strong>Drone Workshop</strong>
+                    <span>BITS</span>
+                </li>
+                <li>
+                    <strong>AI & ML Workshop</strong>
+                    <span>Innomatics</span>
+                </li>
+                <li>
+                    <strong>Data Structures & Algorithms</strong>
+                    <span>Geeks for Geeks</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-container" id="certificates">
+        <h2>Certificates</h2>
+        <div class="content-box">
+            <ul class="info-list">
+                <li>
+                    <strong>Cisco Certifications: IoT Project and CCNA</strong>
+                    <span>Cisco Networking Academy (2024)</span>
+                </li>
+                <li>
+                    <strong>SWAYAM: Java</strong>
+                    <span>(2024)</span>
+                </li>
+                <li>
+                    <strong>Eduskills: Python Programming</strong>
+                    <span>(2025)</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-container" id="education">
+        <h2>Education</h2>
+        <div class="content-box">
+            <strong>Methodist College of Engineering and Technology</strong>
+            <p style="color: #8b949e; margin-top: 4px;">B.E. Computer Science & Engineering (2023–2027)</p>
+        </div>
+    </div>
+
+    <div class="section-container" id="languages">
+        <h2>Languages</h2>
+        <div class="content-box">
+            <span class="tag">English</span>
+            <span class="tag">Telugu</span>
+            <span class="tag">Hindi</span>
+        </div>
+    </div>
+
+    <div class="section-container" id="contact">
+        <h2>Contact</h2>
+        <div class="content-box">
+            <ul class="info-list">
+                <li>
+                    <strong>Phone</strong>
+                    <a href="tel:+919885880277">+91 98858 80277</a>
+                </li>
+                <li>
+                    <strong>Email</strong>
+                    <a href="mailto:gpranay988@gmail.com">gpranay988@gmail.com</a>
+                </li>
+                <li>
+                    <strong>LinkedIn</strong>
+                    <a href="https://linkedin.com/in/g-pranay-ba169131a" target="_blank">linkedin.com/in/g-pranay-ba169131a</a>
+                </li>
+                <li>
+                    <strong>GitHub</strong>
+                    <a href="https://github.com/Pranay277" target="_blank">github.com/Pranay277</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
